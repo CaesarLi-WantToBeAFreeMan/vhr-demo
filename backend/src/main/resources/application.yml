@@ -1,0 +1,65 @@
+#MySQL
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/vhr_database?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: root
+        password: 123456
+
+    #Redis
+    redis:
+        host: localhost
+        port: 6379
+        password: 123456
+        jedis:
+            pool:
+                enabled: true
+                max-active: 8
+                max-idle: 8
+                min-idle: 0
+                max-wait: -1ms
+
+    #cache
+    cache:
+        type: redis
+        redis:
+            time-to-live: 3600000
+            cache-null-values: false
+
+#Spring Secruit
+security:
+    user:
+        username: admin
+        password: admin123!@#
+    csrf:
+        enabled: false
+
+#Spring Boot DevTools
+devtools:
+    restart:
+        enabled: true
+    livereload:
+        enabled: true
+
+#MyBatis
+mybatis:
+    mapper-location: classpath:mapper/*.xml
+    type-aliases-package: com.caesarjlee.vhr.model
+    configuration:
+        map-underscore-to-camel-case: true
+
+#port
+server:
+    port: 3002
+
+#logging
+logging:
+    level:
+        root: INFO
+        com.caesarjlee.vhr: DEBUG
+        org.mybatis: DEBUG
+        org.springframework: INFO
+
+#application
+application:
+    name: vhr
